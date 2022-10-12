@@ -1,0 +1,129 @@
+body {
+    background: #2b2f39;
+}
+
+.box {
+    background: linear-gradient(to right, #4090e1, #e26faf);
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.linear-box {
+    min-width: 100%;
+    min-height: 100px;
+    margin: 0.4rem;
+}
+
+.r {
+    border-radius: 0;
+    margin-right:0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container1 > div:first-child {
+    max-height: 100px;
+    width: 50%;
+    margin-right: 0.4rem;
+
+}
+
+.main-container1 > div
+{
+    margin-top: 0.4rem;
+    margin-left: 0.4rem;
+}
+.l
+{
+    height: 80px;
+    width: 100%;
+}
+.white-box {
+    min-width: 100px;
+    min-height: 100px;
+    background: white;
+    opacity: 60%;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin: 0.2rem;
+}
+
+.double {
+    display: flex;
+    flex-direction: column;
+}
+.container-white {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+
+.container1\.1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.container1\.1\.2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.container1\.2 {
+    display: flex;
+    flex-direction: column;
+}
+.container1\.1\.1 {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0.5rem;
+}
+
+.container1\.1\.1\.1 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+}
+.big-div
+{
+    width: 100%;
+    height : 100%;
+}
+
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+
+
+.lil
+{
+    height: 30%;
+}
