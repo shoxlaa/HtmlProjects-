@@ -483,11 +483,171 @@
 // }
 // console.log(textNumeric(20));
 
-// 3. Написать функцию, которая заменяет в полученной строке большие буквы на маленькие, маленькие – на большие, а цифры – на знак нижнего подчеркивания.
+// 3. Написать функцию, которая заменяет в полученной строке большие буквы на маленькие, маленькие – на большие,
+// а цифры – на знак нижнего подчеркивания.
+// function CheangeCase(string) {
+//     let newStr = "";
+//     for (let i = 0; i < string.length; i++) {
+//         let char = string[i];
+//         if (((/[a-z]/).test(char))) {
+//             newStr += char.toUpperCase();
+//         } else if (((/[A-Z]/).test(char))) {
+//             newStr += char.toLowerCase();
+//         } else if (((/[0-9]/).test(char))) {
+//             newStr += "_";
+//         } else {
+//             newStr += char;
+//         }
+//     }
+//     return newStr;
+// }
+//
+// console.log(CheangeCase("hElLo111"))
+
 // 4. Написать функцию, которая преобразует названия css-стилей с дефисом в название в СamelСase стиле: font-size в fontSize, background-color в backgroundColor, text- align в textAlign.
-// 5. Написать функцию, которая принимает словосочетание и превращает его в аббревиатуру. Например: cascading style sheets в CSS, объектно-ориентированное программирование в ООП.
+// function cssToCamel(string) {
+//     let list = string.split("-");
+//     if(list.length<2)
+//     {
+//         return string;
+//     }
+//     let s = list[1].charAt(0).toUpperCase() + list[1].slice(1);
+//     list[1] = s;
+//     return list.join("");
+// }
+//
+// console.log(cssToCamel("color"));
+
+// 5. Написать функцию, которая принимает словосочетание и превращает его в аббревиатуру.
+// Например: cascading style sheets в CSS, объектно-ориентированное программирование в ООП.
+// function makeAbbreviation(string) {
+//     list = string.split("");
+//     let newList = [];
+//
+//     for (let i = 0; i < list.length; i++) {
+//         if (list[i].includes("-")) {
+//             newList.push(list[i].replace("-", " "));
+//             continue;
+//         }
+//         newList.push(list[i]);
+//     }
+//     let wordWithSpaces = newList.join("");
+//
+//     newList = wordWithSpaces.split(" ");
+//     let abriviature = "";
+//
+//     for (let i = 0; i < newList.length; i++) {
+//         abriviature += newList[i].charAt(0).toUpperCase();
+//     }
+//
+//     return abriviature;
+// }
+//
+// console.log(makeAbbreviation("cascading style sheets"));
 // 6. Написать функцию, которая принимает любое количество строк, объединяет их в одну длинную строку и возвращает ее.
-// 7. Написать функцию – калькулятор. Функция принимает строку с примером, определяет, какое действие необходимо выполнить (+ - * /), переводит операнды в числа, решает пример и возвращает результат.
-// 8. Написать функцию, которая получает url и выводит подробную информацию о нем. Например: url "https://itstep.org/ua/about", информация "протокол: https, домен: itstep.org, путь: /ua/about".
-// 9. Написать функцию, которая принимает строку и разделитель и возвращает массив подстрок, разбитых с помощью указанного разделителя. Например: строка "10/08/2020", разделитель "/", результат: "10", "08", "2020". Выполняя задание, не используйте функцию split().
-// 10. Написать функцию вывода текста по заданному шаблону. Функция принимает первым параметром шаблон, в тексте которого может использоваться %, после символа % указывается индекс входного параметра. При выводе вместо %индекс необходимо вывести значение соответствующего входного параметра. Например: print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020) должна вывести "Today is Monday 10.8.2020".
+
+// function MakeString(...value) {
+//     let string = ""
+//
+//     for (let i = 0; i < value.length; i++) {
+//         string += value[i];
+//     }
+//     return string;
+// }
+//
+// console.log(MakeString("hehehe", "lol", "it is mine"));
+// 7. Написать функцию – калькулятор. Функция принимает строку с примером, определяет,
+// какое действие необходимо выполнить (+ - * /), переводит операнды в числа, решает пример и возвращает результат.
+
+//это простая функция и может выполнять действия только для двух чисел
+// вводите строку в виде "12*2" "11+20"
+// function calculate(string) {
+//     let items = [];
+//     let operator = "";
+//     if (string.includes("+")) {
+//         items = string.split("+");
+//         operator = "+";
+//     }
+//     if (string.includes("-")) {
+//         items = string.split("-");
+//         operator = "-";
+//     }
+//     if (string.includes("/")) {
+//         items = string.split("/");
+//         operator = "/";
+//     }
+//     if (string.includes("*")) {
+//         items = string.split("*");
+//         operator = "*";
+//     }
+//
+//     let a = parseInt(items[0]);
+//     let b = parseInt(items[1]);
+//     switch (operator) {
+//         case"+": {
+//             return a + b;
+//         }
+//         case "/": {
+//             if (b !== 0) {
+//                 return a / b;
+//             }
+//         }
+//         case "*": {
+//             return a * b;
+//         }
+//         case "-": {
+//             return a - b;
+//         }
+//
+//     }
+//     return items;
+// }
+//
+// console.log(calculate("122"));
+
+// 8. Написать функцию, которая получает url и выводит подробную информацию о нем.
+// Например: url "https://itstep.org/ua/about", информация "протокол: https, домен: itstep.org, путь: /ua/about".
+// function urlInfo(string) {
+//
+//     let list = string.split("://");
+//     let protocol = list[0];
+//     list = list[1].split("/");
+//     let domen = list.shift();
+//     let directory = list.join("/");
+//     return `protocol: ${protocol} domen ${domen} directory ${directory}`
+//
+// }
+//
+// console.log(urlInfo("https://itstep.org/ua/about"));
+// 9. Написать функцию, которая принимает строку и разделитель и возвращает массив подстрок, разбитых с помощью указанного разделителя.
+// Например: строка "10/08/2020", разделитель "/", результат: "10", "08", "2020". Выполняя задание, не используйте функцию split().
+// function mySplit(string, separator) {
+//     let list = [];
+//     let listItem = "";
+//     for (i in string) {
+//
+//         if (string[i] === separator) {
+//             list.push(listItem);
+//             listItem = "";
+//         } else {
+//             listItem += string[i];
+//         }
+//     }
+//     if (listItem) {
+//         list.push(listItem)
+//     }
+//     return list;
+// }
+
+// console.log(mySplit("10/08/2020", "/"));
+
+
+// 10. Написать функцию вывода текста по заданному шаблону. Функция принимает первым параметром шаблон, в тексте которого может
+// \использоваться %, после символа % указывается индекс входного параметра. При выводе вместо %индекс необходимо вывести
+// значение соответствующего входного параметра. Например: print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020)
+// // должна вывести "Today is Monday 10.8.2020".
+// function specialAdding(string, ...temps) {
+//     return string.replace(/%(\d+)/g, (newString, num) => temps[num - 1]);
+// }
+//
+// console.log(specialAdding("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
