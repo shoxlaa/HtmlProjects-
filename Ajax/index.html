@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<h1>Search</h1>
+<div id="search">Search:</div>
 
-<form class="container">
-    <div >
+<form>
+    <div id="l">
         <div id="title">
-            <div>Search:</div>
-            <input  type="text" id="b">
+            <div>Title:</div>
+            <input type="text" id="b">
         </div>
         <div id="type">
             <div>Types:</div>
@@ -22,8 +22,30 @@
                 <option>Movie</option>
             </select>
         </div>
+        <input id="getFilm" type="button" value="search">
     </div>
+
 </form>
+<div>Films :</div>
+<div id="cont">
+    <div class="box">
+        <div class="cont">
+            <input type="image" src="http://www.omdbapi.com/src/poster.jpg">
+
+            <div class="contOfTexts">
+                <div id="filmData"></div>
+                <div>Hello my name is lol</div>
+                <div>is doris</div>
+                <div>2015</div>
+                <input type="button" value="Details">
+            </div>
+            <!--    <div class="box" id="b2"> </div>-->
+            <!--    <div class="box" id="b3"> </div>-->
+            <!--    <div class="box"> </div>-->
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
