@@ -51,7 +51,7 @@ $(function () {
 
             // TODO: Add validation for lat lon
 
-            $.get(`http://www.omdbapi.com/?apikey=${apiKey}&/?t=${title}&`).done((data) => {
+            $.get(`http://www.omdbapi.com/?apikey=${apiKey}&/?t=${title}`).done((data) => {
                 let response: RootObject = data;
 
                 $filmData.empty();
