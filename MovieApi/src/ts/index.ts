@@ -35,16 +35,23 @@ $(function f() {
         let $d = $("#d");
         let $search = $("#search");
         let $pageBack = $("#back");
+        let $pageNumber=$("#page-number");
+        let $pageButton= $("#page-button");
         let $pageNext = $("#next");
+        let $movieTitle = $("#movie-title");
         $search.on("click", (e) => {
-            let $movieTitle = $("#movie-title");
-
             $.get(`http://www.omdbapi.com/?i=tt3896198&apikey=31ed7c20&s=${$movieTitle.val()}&type${$movieTypeSelector}`).done((data) => {
                 response = data;
                 addItems($movieList,response);
             });
-
         });
+        $pageButton.on("click",(e) => {
+            $.get(`http://www.omdbapi.com/?i=tt3896198&apikey=31ed7c20&s=${$movieTitle.val()}&page=${$pageNumber.val()}`).done((data) => {
+                response = data;
+                addItems($movieList,response);
+            });
+
+        })
 
 
     });
@@ -52,6 +59,7 @@ $(function f() {
 
     function addItems(buffer: JQuery<HTMLElement>, response: Root) {
         let movies= response.Search;
+        buffer.empty()
         for (let i = 0; i < parseInt(response.totalResults); i++) {
 
             buffer.append(` <div class="box">
