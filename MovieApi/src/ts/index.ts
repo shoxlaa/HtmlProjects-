@@ -1,26 +1,18 @@
 import $ from "jquery";
-
-export interface Root {
-    Search: Search[]
-    totalResults: string
-    Response: string
-}
-
-export interface Search {
-    Title: string
-    Year: string
-    imdbID: string
-    Type: string
-    Poster: string
-}
+import {Root} from "./root";
+import {Root2} from "./root2";
 
 $(function f() {
     let routes: Map<string, () => void> = new Map<string, () => void>();
+
     routes.set("/HtmlProjects-/MovieApi/pages/index.html", () => {
 //ApiRequests prop
         const apiKey: string = "31ed7c20";
         let response: Root;
+        let response2: Root2;
         // newItems values
+        let $document = $(document);
+
 
         let $poster = $(".image");
         let $type = $(".movie-type");
@@ -30,9 +22,11 @@ $(function f() {
 
         let $movieList = $("#movie-list");
 
+        //modalContent
         let $openModel = $(".button-details");
         let $modal = $("#myModal");
         let $span = $(".close");
+
         let $l = $(".l");
 
         let $d = $("#d");
@@ -42,15 +36,35 @@ $(function f() {
         let $pageButton = $("#page-button");
         let $pageNext = $("#next");
         let $movieTitle = $("#movie-title");
-        let $num = $("#numeration");
         let pageNum = 1;
-
-        $l.on("click", (e) => {
-            console.log("Details");
+        $document.on('keypress', (e: KeyboardEvent) => {
+            console.log(e.key);
+            if (e.key === "Enter") {
+                $search.click();
+            }
         });
+
+        $movieList.on("click", (e) => {
+            let $target = $(e.target);
+            let buttonDetails = $target.attr("button-details");
+            if ($target.hasClass("button-details")) {
+                {
+                    let b = $target.prev().prev();
+                    console.log(b.text());
+                    let modelView = $(".sub-model-content");
+                    $modal.css("display", "block");
+
+                    $.get(`http://www.omdbapi.com/?i=tt3896198&apikey=31ed7c20&t=${b.text()}`).done((data) => {
+                        response2 = data;
+                        addModelSource(modelView, response2);
+                    });
+                }
+            }
+
+
+        })
         $openModel.on("click", (e) => {
             $modal.css("display", "block");
-            console.log("opened");
         });
 
         $span.on("click", (e) => {
@@ -88,6 +102,7 @@ $(function f() {
             $.get(`http://www.omdbapi.com/?i=tt3896198&apikey=31ed7c20&s=${$movieTitle.val()}&page=${pageNum.toString()}&type=${$movieTypeSelector}`).done((data) => {
                 response = data;
                 addItems($movieList, response);
+
             });
         })
 
@@ -113,6 +128,28 @@ $(function f() {
                  </div>`)
         }
     }
+
+    function addModelSource(buffer: JQuery<HTMLElement>, response: Root2) {
+        console.log(response);
+        buffer.empty()
+        buffer.append(`
+            <div class="model-cont-image">
+                <input type="image" class="details-poster" src="${response.Poster.toString()}">
+               </div>
+            <div class="model-cont-list">
+                <div class="details-rel">${response.Released}</div>
+                <div class="details-genr">${response.Genre}</div>
+                <div class="details-country">${response.Country}</div>
+                <div class="details-director">${response.Director}</div>
+                <div class="details-writer">${response.Writer}</div>
+                <div class="details-actor">${response.Actors}</div>
+                <div class="details-title">${response.Title}</div>
+                <div class="details-awards">${response.Awards}</div>
+            </div>
+
+`)
+    }
+
 
     if (result !== undefined) {
         result();
