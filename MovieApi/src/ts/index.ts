@@ -37,12 +37,12 @@ $(function f() {
         let $pageNext = $("#next");
         let $movieTitle = $("#movie-title");
         let pageNum = 1;
-        $document.on('keypress', (e: KeyboardEvent) => {
-            console.log(e.key);
-            if (e.key === "Enter") {
-                $search.click();
-            }
-        });
+        // $document.on('keypress', (e: KeyboardEvent) => {
+        //     console.log(e.key);
+        //     if (e.key === "Enter") {
+        //         $search.click();
+        //     }
+        // });
 
         $movieList.on("click", (e) => {
             let $target = $(e.target);
@@ -58,6 +58,7 @@ $(function f() {
                         response2 = data;
                         addModelSource(modelView, response2);
                     });
+
                 }
             }
 
